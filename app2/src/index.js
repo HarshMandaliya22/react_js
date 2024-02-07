@@ -2,83 +2,73 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
-class EMI extends React.Component {
+class Post extends React.Component {
     constructor(props) {
-        super(props);
+        console.log("constructor method is called......");
+        super(props)
+        //property variable
+        this.detail = props.detail;
+        this.photo = props.photo;
+        //state variable
         this.state = {
-            amount: 0,
-            interest_rate: 0,
-            loan_tenure: 0,
-            emi: 0
+            count: 0
         }
     }
-    updateAmount = (event) => {
+    updateCount = () => {
         this.setState({
-            amount: parseFloat(event.target.value)
-        }, () => {
-            this.calculateEMI();
+            count: this.state.count + 1
         });
     }
-    updateInterestRate = (event) => {
-        this.setState({
-            interest_rate: parseFloat(event.target.value)
-        }, () =>{
-            this.calculateEMI();
-        });
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log("should component method is called......");
+        if (nextState.count > 10 && nextState.count < 20)
+            return false;
+        else
+            return true;
     }
-    updateLoanTenure = (event) => {
-        this.setState({
-            loan_tenure: parseFloat(event.target.value)
-        }, () => {
-            this.calculateEMI();
-        });
-    }
-    calculateEMI = (event) => {
-        event.preventDefault();
-        let { amount, interest_rate, loan_tenure } = this.state;
-        if (amount !== 0 && interest_rate !== 0 && loan_tenure !== 0) {
-            this.setState({
-                emi: (((amount * interest_rate) * Math.pow(1 + interest_rate, loan_tenure)) / (Math.pow(1 + interest_rate, loan_tenure) - 1)).toFixed(2)
-            });
-        }
+    componentWillUpdate(nextProps, nextState)
+    {
+        console.log('componentWillUpdate method is called...');
     }
     render() {
-        return (
-            <div className="container mt-5">
-                <div className="row justify-content-center">
-                    <div className="col-12">
-                        <div className="card">
-                            <div className="card-header text-bg-primary">
-                                <h2 className="card-title ">EMI Calculator</h2>
-                            </div>
-                            <div className="card-body">
-                                <form >
-                                    <div className="row mb-3">
-                                        <div className="col">
-                                            <input onBlur={this.updateAmount} type="number" className="form-control" id="loanAmount" placeholder="Enter Loan Amount"
-                                                required />
-                                        </div>
-                                        <div className="col">
-                                            <input onBlur={this.updateInterestRate} type="number" className="form-control" id="interestRate" placeholder="Enter Interest Rate"
-                                                required />
-                                        </div>
-                                        <div className="col">
-                                            <input onBlur={this.updateLoanTenure} type="number" className="form-control" id="loanTenure" placeholder="Enter Loan Tenure"
-                                                required />
-                                        </div>
-                                        <div className='col'><button type="submit" onClick={this.calculateEMI} className="btn btn-primary" >Calculate EMI</button>
-                                        </div>
-                                        <div className="col">
-                                            <h3>EMI: <span id="emiResult">{this.state.emi}</span> INR</h3>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+        console.log('render method is called...');
+        return (<div className='col-lg-3 col-md-4 col-sm-6 col-12'>
+            <div className='card'>
+                <img className='card-img-top' src={this.photo} />
+                <div className='card-body'>
+                    <p>{this.detail}</p>
+                </div>
+                <div className='card-footer d-flex justify-content-between'>
+                    <h4>{this.state.count}</h4>
+                    <img onClick={this.updateCount} src='like.png' className='img-fluid' />
+                </div>
+            </div>
+        </div>);
+    }
+    componentDidUpdate(previousProps,previousState)
+    {
+        console.log('componentDidUpdate method is called...');
+    }
+}
+function Page() {
+    return (
+        <>
+            <div className='container-fluid bg-light p-2'>
+                <div className='row'>
+                    <div className='col-12'>
+                        <h1>App life cycle</h1>
                     </div>
                 </div>
             </div>
-        )
-    }
+            <div className='container'>
+                <div className='row mt-2'>
+                    <Post detail='first post detail' photo='https://picsum.photos/300?random=1' />
+                    <Post detail='second post detail' photo='https://picsum.photos/300?random=2' />
+                    <Post detail='third post detail' photo='https://picsum.photos/300?random=3' />
+                </div>
+            </div>
+        </>
+
+    );
 }
-root.render(<EMI />)
+root.render(<Page />)

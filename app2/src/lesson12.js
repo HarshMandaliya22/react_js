@@ -17,14 +17,22 @@ class Table extends React.Component {
         }
     }
     updateGujarati = () => {
+        let temp = this.state.gujarati
         this.setState({
             gujarati: this.state.gujarati + 1
-        }, () => { this.updateTotal() })
+        }, () => {
+            this.updateTotal();
+            this.props.updateGujaratiTotal(this.state.gujarati - temp);
+        })
     }
     updatePunjabi = () => {
+        let temp = this.state.punjabi
         this.setState({
             punjabi: this.state.punjabi + 1
-        }, () => { this.updateTotal() })
+        }, () => {
+            this.updateTotal();
+            this.props.updatePunjabiTotal(this.state.punjabi - temp);
+        })
     }
     updateOthers = (itemname) => {
         // alert(itemname);
@@ -48,7 +56,7 @@ class Table extends React.Component {
                 butter_milk: this.state.butter_milk + 1
             }, () => { this.updateTotal() })
         }
-        
+
     }
     updateTotal = () => {
         // punjabi = 200, gujarati = 100, sweets = 30, butter milk = 15, papad = 10, roti = 5
@@ -100,6 +108,16 @@ class Restaurant extends React.Component {
             punjabi_total: 0
         }
     }
+    updateGujaratiTotal = (total) => {
+        this.setState({
+            gujarati_total: this.state.gujarati_total + total
+        });
+    }
+    updatePunjabiTotal = (total) => {
+        this.setState({
+            punjabi_total: this.state.punjabi_total + total
+        });
+    }
     render() {
         return (<>
             <div className='container-fluid bg-light p-3'>
@@ -107,19 +125,28 @@ class Restaurant extends React.Component {
                     <div className='col-12 d-flex justify-content-between'>
                         <h1>Shree Hari Restaurant</h1>
                         <h4>Gujarati Thali:- {this.state.gujarati_total}</h4>
-                        <h4>Puinjabi Thali:- {this.state.punjabi_total}</h4>
+                        <h4>Punjabi Thali:- {this.state.punjabi_total}</h4>
                     </div>
                 </div>
             </div>
             <div className='container mt-4'>
                 <div className='row'>
-                    <Table name="Kanjibhai" />
-                    <Table name="Premjibhai" />
-                    <Table name="Kiranbhai" />
-                    <Table name="Ramjibhai" />
+                    <Table updateGujaratiTotal={this.updateGujaratiTotal}
+                        updatePunjabiTotal={this.updatePunjabiTotal}
+                        name="Kanjibhai" />
+                    <Table updateGujaratiTotal={this.updateGujaratiTotal}
+                        updatePunjabiTotal={this.updatePunjabiTotal}
+                        name="Premjibhai" />
+                    <Table updateGujaratiTotal={this.updateGujaratiTotal}
+                        updatePunjabiTotal={this.updatePunjabiTotal}
+                        name="Kiranbhai" />
+                    <Table updateGujaratiTotal={this.updateGujaratiTotal}
+                        updatePunjabiTotal={this.updatePunjabiTotal}
+                        name="Ramjibhai" />
                 </div>
             </div>
         </>)
     }
 }
 root.render(<Restaurant />);
+

@@ -1,0 +1,5 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+m2.portotheme.com	TRUE	/	FALSE	1999999999	PHPSESSID	8af854d9b13f94105ffd4fdb301c94b3
+m2.portotheme.com	TRUE	/	FALSE	1999999999	SameSite	Lax
+

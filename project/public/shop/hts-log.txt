@@ -1,0 +1,38 @@
+HTTrack3.49-2+htsswf+htsjava launched on Wed, 07 Feb 2024 20:42:13 at https://m2.portotheme.com/demo4_en/ +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" https://m2.portotheme.com/demo4_en/ -O1 "C:\Users\Lenovo\Downloads\shop" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+20:43:55	Warning: 	Found for https://m2.portotheme.com/demo4_en/customer/account/
+20:43:55	Warning: 	File has moved from https://m2.portotheme.com/demo4_en/customer/account/ to https://m2.portotheme.com/demo4_en/customer/account/login/referer/aHR0cHM6Ly9tMi5wb3J0b3RoZW1lLmNvbS9kZW1vNF9lbi9jdXN0b21lci9hY2NvdW50L2luZGV4Lw~~/
+20:43:59	Warning: 	Moved Permanently for https://m2.portotheme.com/demo4_en/categories.html/
+20:43:59	Warning: 	File has moved from https://m2.portotheme.com/demo4_en/categories.html/ to https://m2.portotheme.com/demo4_en/categories.html
+20:44:31	Warning: 	Moved Permanently for https://m2.portotheme.com/demo4_en/porto-evolution-headset-default.html/
+20:44:31	Warning: 	File has moved from https://m2.portotheme.com/demo4_en/porto-evolution-headset-default.html/ to https://m2.portotheme.com/demo4_en/porto-evolution-headset-default.html
+20:45:15	Error: 	"Error when decompressing" (-1) at link https://m2.portotheme.com/demo4_en/porto-evolution-headset-default.html (from https://m2.portotheme.com/demo4_en/)
+20:45:15	Error: 	Unable to save file C:/Users/Lenovo/Downloads/shop/m2.portotheme.com/demo4_en/porto-evolution-headset-default.html: Permission denied
+20:45:35	Warning: 	Moved Permanently for https://m2.portotheme.com/demo4_en/blog/
+20:45:35	Warning: 	File has moved from https://m2.portotheme.com/demo4_en/blog/ to https://m2.portotheme.com/demo4_en/blog
+20:45:35	Error: 	"Not Found" (404) at link https://m2.portotheme.com/demo4_en/blog/post/post-format-image-gallery/ (from https://m2.portotheme.com/demo4_en/)
+20:45:35	Warning: 	Found for https://m2.portotheme.com/demo4_en/checkout/
+20:45:35	Warning: 	File has moved from https://m2.portotheme.com/demo4_en/checkout/ to https://m2.portotheme.com/demo4_en/checkout/cart/
+20:47:02	Error: 	"Not Found" (404) at link https://m2.portotheme.com/demo4_en/https (from https://m2.portotheme.com/demo4_en/)
+20:47:38	Error: 	"Not Found" (404) at link https://m2.portotheme.com/demo4_en/catalogsearch/advanced/https (from https://m2.portotheme.com/demo4_en/catalogsearch/advanced/)
+20:47:42	Error: 	"Not Found" (404) at link https://m2.portotheme.com/demo4_en/checkout/cart/https (from https://m2.portotheme.com/demo4_en/checkout/cart/)
+20:47:42	Error: 	"Error when decompressing" (-1) at link https://m2.portotheme.com/demo4_en/categories.html (from https://m2.portotheme.com/demo4_en/categories.html/)
+20:47:42	Error: 	Unable to save file C:/Users/Lenovo/Downloads/shop/m2.portotheme.com/demo4_en/categories.html: Permission denied
+20:48:14	Error: 	"Not Found" (404) at link https://m2.portotheme.com/demo4_en/porto-product-list-types/https (from https://m2.portotheme.com/demo4_en/porto-product-list-types/)
+20:50:16	Error: 	"Not Found" (404) at link https://m2.portotheme.com/demo4_en/about-porto/https (from https://m2.portotheme.com/demo4_en/about-porto/)
+20:50:18	Error: 	"Not Found" (404) at link https://m2.portotheme.com/demo4_en/contact/https (from https://m2.portotheme.com/demo4_en/contact/)
+20:50:20	Error: 	"Not Found" (404) at link https://m2.portotheme.com/demo4_en/porto-header-types/https (from https://m2.portotheme.com/demo4_en/porto-header-types/)
+20:50:21	Error: 	"Not Found" (404) at link https://m2.portotheme.com/demo4_en/porto-footer-types/https (from https://m2.portotheme.com/demo4_en/porto-footer-types/)
+20:51:12	Error: 	"Not Found" (404) at link https://m2.portotheme.com/demo4_en/blog/post/https (from https://m2.portotheme.com/demo4_en/blog/post/perfect-accessories)
+20:51:22	Error: 	"Not Found" (404) at link https://m2.portotheme.com/demo4_en/blog/category/https (from https://m2.portotheme.com/demo4_en/blog/category/fashion-trends)
+20:51:25	Error: 	"Not Found" (404) at link https://m2.portotheme.com/demo4_en/blog/author/https (from https://m2.portotheme.com/demo4_en/blog/author/admin-admin)
+20:51:34	Error: 	"Not Found" (404) at link https://m2.portotheme.com/demo4_en/blog/archive/https (from https://m2.portotheme.com/demo4_en/blog/archive/2021-02)
+
+HTTrack Website Copier/3.49-2 mirror complete in 12 minutes 6 seconds : 621 links scanned, 600 files written (49588257 bytes overall) [21064682 bytes received at 29014 bytes/sec], 39712987 bytes transferred using HTTP compression in 395 files, ratio 20%, 20.7 requests per connection
+(17 errors, 10 warnings, 0 messages)

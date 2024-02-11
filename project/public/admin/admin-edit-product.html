@@ -87,7 +87,6 @@
 
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
@@ -154,8 +153,75 @@
 
                     <div class="card">
                         <div class="card-header bg-primary text-white d-flex justify-content-between">
-                            <h3 class="mb-1">Module</h3>
-                            <a href="#" class="btn btn-light">back</a>
+                            <h3 class="mb-1">Product</h3>
+                            <a href="admin-products.html" class="btn btn-light">back</a>
+                        </div>
+                        <div class="card-body ">
+                            <h5 class="border-bottom pb-2">Edit product</h5>
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label for="categoryid" class="form-label">Change Category ID</label>
+                                        <select class="form-select" id="categoryid" name="categoryid" required
+                                            autofocus>
+                                            <option value="1">Category 1</option>
+                                            <option value="2">Category 2</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="title" class="form-label">Edit Title</label>
+                                        <input type="text" class="form-control" id="title" name="title" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="price" class="form-label">Edit Price</label>
+                                        <input type="number" class="form-control" id="price" name="price" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="stock" class="form-label">Edit Stock</label>
+                                        <input type="number" class="form-control" id="stock" name="stock" required>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-4">
+                                        <label for="weight" class="form-label">Edit Weight</label>
+                                        <input type="text" class="form-control" id="weight" name="weight" required />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="size" class="form-label">Edit Size</label>
+                                        <input type="text" class="form-control" id="size" name="size" required />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="photo" class="form-label">Change Photo</label>
+                                        <input type="file" class="form-control" id="photo" name="photo" accept="image/*"
+                                            required />
+                                    </div>
+
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-2">
+                                        <label class="form-check-label d-block">Is Live</label>
+                                        <div class="form-check form-check">
+                                            <input class="form-check-input" type="radio" name="islive" id="yes"
+                                                value="yes" required />
+                                            <label class="form-check-label" for="yes">Yes</label>
+                                        </div>
+                                        <div class="form-check form-check">
+                                            <input class="form-check-input" type="radio" name="islive" id="no"
+                                                value="no" required />
+                                            <label class="form-check-label" for="no">No</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <label for="detail" class="form-label">Change Detail</label>
+                                        <textarea class="form-control" id="detail" name="detail" rows="2"
+                                            required></textarea>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button type="submit" class="btn btn-primary mt-4 w-100">Save Changes</button>
+                                        <button type="reset" class="btn btn-dark w-100 mt-1">Clear</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
 

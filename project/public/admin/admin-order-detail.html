@@ -152,38 +152,90 @@
                 <div class="container-fluid">
                     <div class="card shadow">
                         <div class="card-header bg-primary text-white d-flex justify-content-between">
-                            <h3 class="mb-1">Category</h3>
-                            <a href="admin-add-category.html" class="btn btn-light">Add New Category </a>
+                            <h3 class="mb-1">Orders</h3>
+                            <span>
+                                <a class="btn btn-light" href="admin-orders.html">back</a>
+                                <button type="button" onclick="window.print();" class="btn btn-light">Print</button>
+                            </span>
                         </div>
                         <div class="card-body">
                             <table class="table text-center table-bordered table-sm">
-                                <thead class="text-center">
+                                <tr>
+                                    <th>Bill No</th>
+                                    <td>12345</td>
+                                    <th>Customer ID</th>
+                                    <td>7890</td>
+                                </tr>
+                                <tr>
+                                    <th>Date</th>
+                                    <td>12-02-2024</td>
+                                    <th>Name</th>
+                                    <td>Rahul Sharma</td>
+                                </tr>
+                                <tr>
+                                    <th>Amount</th>
+                                    <td>₹100.00</td> <!-- Assuming Indian Rupees -->
+                                    <th>Address</th>
+                                    <td>42, MG Road, Pune</td>
+                                </tr>
+                                <tr>
+                                    <th>Payment status</th>
+                                    <td>Paid</td>
+                                    <th>City</th>
+                                    <td>Mumbai</td>
+                                </tr>
+                                <tr>
+                                    <th>Order Status</th>
+                                    <td>
+                                        <select name="orderstatus" class="form-select">
+                                            <option value="">change order status</option>
+                                            <option value="1">Confirmed</option>
+                                            <option value="2">Dispatched</option>
+                                            <option value="3">Delivered</option>
+                                            <option value="4">Return</option>
+                                        </select>
+                                    </td>
+                                    <th>Pincode</th>
+                                    <td>411001</td>
+                                </tr>
+                                <tr>
+                                    <th>Remarks</th>
+                                    <td>None</td>
+                                    <th>Mobile</th>
+                                    <td>+91-1234567890</td>
+                                </tr>
+                            </table>
+                            <table class="table table-bordered text-center table-striped table-sm mt-3">
+                                <thead>
                                     <tr>
-                                        <th>id</th>
-                                        <th>Product</th>
-                                        <th width="40%">Photo</th>
-                                        <th>Is Live</th>
-                                        <th>Action</th>
+                                        <th>Product ID</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>1</td>
-                                        <td>Mobile</td>
-                                        <td> <img src="https://picsum.photos/150" class="img-fluid" alt=""> </td>
-                                        <td>Yes</td>
-                                        <td>
-                                            <a href="admin-edit-category.html"><i class="fa-solid fa-pencil fa-2x"></i>
-                                            </a>
-                                            &nbsp;
-                                            <a href="#">
-                                                <i class="fa-solid fa-trash fa-2x"></i>
-                                            </a>
-                                        </td>
-                                        </a>
+                                        <td>001</td>
+                                        <td>Product A</td>
+                                        <td>₹50.00</td>
+                                        <td>2</td>
+                                        <td>₹100.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>002</td>
+                                        <td>Product B</td>
+                                        <td>₹75.00</td>
+                                        <td>3</td>
+                                        <td>₹225.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4"></td>
+                                        <th>₹325.00</th>
                                     </tr>
                                 </tbody>
-                            </table>
+                            </table>          
                         </div>
                     </div>
                 </div>

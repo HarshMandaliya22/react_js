@@ -1,17 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-
+import AdminLogIn from './AdminLogIn';
+import AdminForgotPassword from './AdminForgotPassword';
+import AdminAddCategory from './AdminAddCategory';
+import AdminAddProduct from './AdminAddProduct';
+import AdminCategory from './AdminCategory';
+import AdminChangePassword from './AdminChnagePassword';
+import AdminEditCategory from './AdminEditCategory';
+import AdminEditproduct from './AdminEditProduct';
+import AdminHome from './AdminHome';
+import AdminOrders from './AdminOrders';
+import AdminOrderDetail from './AdminOrderDetail';
+import AdminProducts from './AdminProducts';
+import AdminProfile from './AdminProfile';
+import AdminUsers from './AdminUsers';
+import AdminViewProduct from './AdminViewProduct';
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+root.render(<AdminViewProduct/>)

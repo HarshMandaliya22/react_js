@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function AdminLogIn()
 {
     return(<div className="container bg-gradient-primary">
@@ -38,7 +40,7 @@ export default function AdminLogIn()
                   </form>
                   <hr />
                   <div className="text-center">
-                    <a className="small" href="admin-forgot-password.html">Forgot Password?</a>
+                    <Link className="small" to="/forgot-password">Forgot Password?</Link>
                   </div>
                 </div>
               </div>

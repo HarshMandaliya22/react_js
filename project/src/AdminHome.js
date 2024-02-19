@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import AdminSideMenu from "./AdminSideMenu";
 export default function AdminHome() {
     return (<div>
@@ -45,10 +46,10 @@ export default function AdminHome() {
               </a>
               {/* Dropdown - User Information */}
               <div className="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a className="dropdown-item" href="admin-profile.html">
+                <Link className="dropdown-item" to="/profile">
                   <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400" />
                   Profile
-                </a>
+                </Link>
                 <div className="dropdown-divider" />
                 <a className="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400" />
@@ -71,7 +72,7 @@ export default function AdminHome() {
                   <h4 className="mb-9 fw-semibold border-bottom pb-2">Today Sales</h4>
                   <div className="col-12">
                     <h5 className="fw-semibold mb-3"><span className="badge bg-primary text-white p-2">100</span>
-                      Orders</h5>
+                    &emsp;Orders</h5>
                   </div>
                 </div>
               </div>
@@ -82,7 +83,7 @@ export default function AdminHome() {
                   <h4 className="mb-9 fw-semibold border-bottom pb-2">Weekly Sales</h4>
                   <div className="col-12">
                     <h5 className="fw-semibold mb-3"><span className="badge bg-primary text-white p-2">100</span>
-                      Orders</h5>
+                    &emsp;Orders</h5>
                   </div>
                 </div>
               </div>
@@ -93,7 +94,7 @@ export default function AdminHome() {
                   <h4 className="mb-9 fw-semibold border-bottom pb-2">Monthly Sales</h4>
                   <div className="col-12">
                     <h5 className="fw-semibold mb-3"><span className="badge bg-primary text-white p-2">100</span>
-                      Orders</h5>
+                    &emsp;Orders</h5>
                   </div>
                 </div>
               </div>
@@ -104,7 +105,7 @@ export default function AdminHome() {
                   <h4 className="mb-9 fw-semibold border-bottom pb-2">Yearly Sales</h4>
                   <div className="col-12">
                     <h5 className="fw-semibold mb-3"><span className="badge bg-primary text-white p-2">100</span>
-                      Orders</h5>
+                    &emsp;Orders</h5>
                   </div>
                 </div>
               </div>
@@ -119,7 +120,7 @@ export default function AdminHome() {
                 <div className="card-body p-4">
                   <h4 className="mb-9 fw-semibold border-bottom pb-2">Total Users</h4>
                   <div className="col-12">
-                    <h5 className="fw-semibold mb-3"><span className="badge bg-primary text-white p-2">100</span> Users
+                    <h5 className="fw-semibold mb-3"><span className="badge bg-primary text-white p-2">100</span>&emsp;Users
                     </h5>
                   </div>
                 </div>
@@ -130,8 +131,7 @@ export default function AdminHome() {
                 <div className="card-body p-4">
                   <h4 className="mb-9 fw-semibold border-bottom pb-2">Total Product</h4>
                   <div className="col-12">
-                    <h5 className="fw-semibold mb-3"><span className="badge bg-primary text-white p-2">100</span>
-                      Products</h5>
+                    <h5 className="fw-semibold mb-3"><span className="badge bg-primary text-white p-2">100</span>&emsp;Products</h5>
                   </div>
                 </div>
               </div>
@@ -142,7 +142,7 @@ export default function AdminHome() {
                   <h4 className="mb-9 fw-semibold border-bottom pb-2">Total Categories</h4>
                   <div className="col-12">
                     <h5 className="fw-semibold mb-3"><span className="badge bg-primary text-white p-2">100</span>
-                      Category</h5>
+                    &emsp;Category</h5>
                   </div>
                 </div>
               </div>
@@ -178,7 +178,7 @@ export default function AdminHome() {
         <div className="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div className="modal-footer">
           <button className="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a className="btn btn-primary" href="login.html">Logout</a>
+          <Link className="btn btn-primary" to="/">Logout</Link>
         </div>
       </div>
     </div>

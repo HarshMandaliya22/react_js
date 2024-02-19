@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 export default function AdminForgotPassword()
 {
     return(<div className="container bg-gradient-primary">
@@ -20,13 +21,13 @@ export default function AdminForgotPassword()
                     <div className="form-group">
                       <input type="email" className="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." />
                     </div>
-                    <a href="admin-login.html" className="btn btn-primary btn-user btn-block">
+                    <Link to="/change-password" className="btn btn-primary btn-user btn-block">
                       Reset Password
-                    </a>
+                    </Link>
                   </form>
                   <hr />
                   <div className="text-center">
-                    <a className="small" href="admin-login.html">Already have an account? Login!</a>
+                    <Link className="small" to="/">Already have an account? Login!</Link>
                   </div>
                 </div>
               </div>

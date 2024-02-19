@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import AdminSideMenu from "./AdminSideMenu";
 export default function AdminAddCategory() {
     return (<div>
@@ -45,10 +46,10 @@ export default function AdminAddCategory() {
                                 </a>
                                 {/* Dropdown - User Information */}
                                 <div className="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                    <a className="dropdown-item" href="admin-profile.html">
+                                    <Link className="dropdown-item" to="/profile">
                                         <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400" />
                                         Profile
-                                    </a>
+                                    </Link>
                                     <div className="dropdown-divider" />
                                     <a className="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                         <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400" />
@@ -65,7 +66,7 @@ export default function AdminAddCategory() {
                             <div className="card shadow">
                                 <div className="card-header d-flex justify-content-between bg-primary">
                                     <h3 className="mb-1 text-white">Category</h3>
-                                    <a href="admin-category.html" className="btn btn-light">back</a>
+                                    <Link to="/category" className="btn btn-light">back</Link>
                                 </div>
                                 <div className="card-body">
                                     <h5 className="border-bottom pb-2">Add new category</h5>
@@ -129,7 +130,7 @@ export default function AdminAddCategory() {
                     <div className="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                     <div className="modal-footer">
                         <button className="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a className="btn btn-primary" href="login.html">Logout</a>
+                        <Link className="btn btn-primary" to="/">Logout</Link>
                     </div>
                 </div>
             </div>

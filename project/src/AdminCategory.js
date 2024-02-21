@@ -1,10 +1,65 @@
 import AdminSideMenu from "./AdminSideMenu";
+import { useEffect, useState } from "react";
+import { ToastContainer } from "react-toastify";
+import showError, { NetworkError } from "./toast-message";
 import { Link } from "react-router-dom";
+import getBase, { getImages } from "./api";
 export default function AdminCategory() {
-   return(<div>
+  let DisplayCategory = function (item) {
+    return (
+      <tr>
+        <td>{item.id}</td>
+        <td>{item.title}</td>
+        <td> <img src={getImages() + "category/" + item.photo} className="img-fluid" alt /> </td>
+        <td>{(item.islive) === "1" ? "Yes" : "No"}</td>
+        <td>
+          <Link to="/edit-category"><i className="fa-solid fa-pencil fa-2x" />
+          </Link>
+          &nbsp;
+          <a href="#">
+            <i className="fa-solid fa-trash fa-2x" />
+          </a>
+        </td>
+      </tr>
+    )
+  }
+  // create state array
+  let [category, setCategory] = useState([]);
+  //use hook useEffect()
+  useEffect(() => {
+    //call api 
+    if (category.length === 0) {
+      let apiAddress = getBase() + 'category.php';
+      fetch(apiAddress)
+        .then((response) => response.json()) //convert string to json
+        .then((data) => {
+          console.log(data);
+          //get error info
+          let error = data[0]['error'];
+          if (error !== 'no') //there is error
+            showError(error);
+          else if (data[1]['total'] === 0)
+            showError('no category found');
+          else {
+            //there is not error and there are at least 1 category found 
+            data.splice(0, 2)// remove 2 object from 0th position;
+            console.log(data);
+            setCategory(data);
+          }
+        })
+        .catch((error) => {
+          // console.log(error);
+          // alert("oops something went wrong, please try after sometime.");
+          // toast("");
+          NetworkError('oops something went wrong, please try after sometime.');
+        });
+    }
+  })
+
+  return (<div>
     <div id="wrapper">
       {/* Sidebar */}
-      <AdminSideMenu/>
+      <AdminSideMenu />
       {/* End of Sidebar */}
       {/* Content Wrapper */}
       <div id="content-wrapper" className="d-flex flex-column">
@@ -79,20 +134,7 @@ export default function AdminCategory() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Mobile</td>
-                      <td> <img src="https://picsum.photos/150" className="img-fluid" alt /> </td>
-                      <td>Yes</td>
-                      <td>
-                        <Link to="/edit-category"><i className="fa-solid fa-pencil fa-2x" />
-                        </Link>
-                        &nbsp;
-                        <a href="#">
-                          <i className="fa-solid fa-trash fa-2x" />
-                        </a>
-                      </td>
-                    </tr>
+                    {category.map((item) => DisplayCategory(item))}
                   </tbody>
                 </table>
               </div>

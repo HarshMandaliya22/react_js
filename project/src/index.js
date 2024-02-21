@@ -36,7 +36,7 @@ function ProjectRoute() {
                 <Route path='/products' element={<AdminProducts />} />
                 <Route path='/profile' element={<AdminProfile />} />
                 <Route path='/users' element={<AdminUsers />} />
-                <Route path='/view-product' element={<AdminViewProduct />} />
+                <Route path='/view-product/:productid' element={<AdminViewProduct />} />
                 <Route path='*' element={<NoPageFound />} />
             </Routes>
         </BrowserRouter>

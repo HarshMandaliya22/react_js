@@ -13,7 +13,7 @@ export default function showError(message) {
         transition: Bounce,
     });
 }
-export function NetweorkError()
+export function NetworkError()
 {
     showError('oops something went wrong, please try after sometime.');
 }

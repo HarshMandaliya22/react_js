@@ -1,4 +1,12 @@
+function get()
+{
+    return "http://www.theeasylearnacademy.com/shop/"
+}
 export default function getBase()
 {
-    return 'http://www.theeasylearnacademy.com/shop/ws/';
+    return get() +'ws/';
+}
+export function getImages()
+{
+    return get() + "images/"
 }

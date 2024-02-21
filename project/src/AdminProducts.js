@@ -1,6 +1,65 @@
-import { Link } from "react-router-dom";
+import { Link, redirectDocument } from "react-router-dom";
+import showError, { NetworkError } from "./toast-message";
+import { useEffect, useState } from "react";
+import { ToastContainer } from "react-toastify";
+import getBase, { getImages } from "./api";
 import AdminSideMenu from "./AdminSideMenu";
 export default function AdminProducts() {
+    //inner function
+    let DisplayProduct = function (item) {
+        return (<tr>
+            <td>{item["id"]}</td>
+            <td>{item["title"]} <br />
+                <span className="text-danger">{item["categorytitle"]}</span>
+            </td>
+            <td> <img src={getImages() + "product/" + item.photo} className="img-fluid" alt />
+            </td>
+            <td>{(item["islive"]) === "1" ? "Yes" : "No"}</td>
+            <td>
+                {/* dynamic route because it has input */}
+                <Link to={"/view-product/" + item["id"]}><i className="fa-solid fa-eye fa-2x" />
+                </Link>
+                &nbsp;
+                <Link to="/edit-product"><i className="fa-solid fa-pencil fa-2x" />
+                </Link>
+                &nbsp;
+                <a href="#">
+                    <i className="fa-solid fa-trash fa-2x" />
+                </a>
+            </td>
+        </tr>);
+    }
+    // create state array
+    let [product, setProduct] = useState([]);
+    useEffect(() => {
+        //call api
+        if (product.length === 0) {
+            let apiAddress = getBase() + "/product.php";
+            fetch(apiAddress)
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data);
+                    //get error info
+                    let error = data[0]["error"];
+                    if (error !== "no") {
+                        showError();
+                    }
+                    else if (data[1]["total"] === 0) {
+                        showError("No product is found");
+                    }
+                    else {
+                        //there is no error and there is atleast one product
+                        data.splice(0, 2);
+                        console.log(data);
+                        setProduct(data);
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                    NetworkError('oops something went wrong, please try after sometime.')
+                })
+        }
+    })
     return (<div>
         <div id="wrapper">
             {/* Sidebar */}
@@ -79,25 +138,7 @@ export default function AdminProducts() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>I Phone - 15 <br />
-                                                <span className="text-danger">(Mobile)</span>
-                                            </td>
-                                            <td> <img src="https://picsum.photos/150" className="img-fluid" alt /> </td>
-                                            <td>Yes</td>
-                                            <td>
-                                                <Link to="/view-product"><i className="fa-solid fa-eye fa-2x" />
-                                                </Link>
-                                                &nbsp;
-                                                <Link to="/edit-product"><i className="fa-solid fa-pencil fa-2x" />
-                                                </Link>
-                                                &nbsp;
-                                                <a href="#">
-                                                    <i className="fa-solid fa-trash fa-2x" />
-                                                </a>
-                                            </td>
-                                        </tr>
+                                        {product.map((item) => DisplayProduct(item))}
                                     </tbody>
                                 </table>
                             </div>

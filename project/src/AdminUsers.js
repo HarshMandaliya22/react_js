@@ -4,6 +4,7 @@ import showError, { NetworkError } from "./toast-message";
 import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import getBase from "./api";
+import axios from 'axios';
 export default function AdminUsers() {
     //inner function
     let DisplayUsers = function(item){
@@ -24,29 +25,27 @@ export default function AdminUsers() {
     //call api
     if (users.length === 0) {
       let apiAddress = getBase() + "/users.php";
-      fetch(apiAddress)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          //get error info
-          let error = data[0]["error"];
-          if (error !== "no") {
-            showError();
-          }
-          else if (data[1]["total"] === 0) {
-            showError("No order is found");
-          }
-          else {
-            //there is no error and there is atleast one product
-            data.splice(0, 2);
-            console.log(data);
-            setUsers(data);
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-          NetworkError('oops something went wrong, please try after sometime.')
-        })
+      axios({
+        method: 'get',
+        responseType: 'json',
+        url: apiAddress
+    }).then((response) => {
+        console.log(response);
+        let error = response.data[0]['error'];
+        if (error !== 'no')
+            showError(error);
+        else if (response.data[1]['total'] === 0)
+            showError('no users found');
+        else {
+            response.data.splice(0, 2);
+            setUsers(response.data);
+        }
+    }).catch((error) => {
+        console.log(error.code);
+        if (error.code === 'ERR_NETWORK')
+            showError("Either internet is switch off or api is not available");
+
+    });
     }
   })
     return (<div>

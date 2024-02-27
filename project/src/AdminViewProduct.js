@@ -8,32 +8,34 @@ import AdminSideMenu from "./AdminSideMenu";
 export default function AdminViewProduct() {
   //store query string named as productid into variable
   let { productid } = useParams();
-  console.log(productid);
+  // console.log(productid);
   //create state array         
   let [product, setProduct] = useState({}); //here we use {} instead of [] because we have only one object not multiple objects
   useEffect(() => {
-    if (productid === undefined) {
+    if (product.id === undefined) {
       //api calling
       let apiAddress = getBase() + "product.php?productid=" + productid;
       // call api using fetch method
+      console.log(apiAddress);
       fetch(apiAddress)
         .then((response) => response.json())
         .then((data) => {
           // console.log(data);
           let error = data[0]["error"];
           if (error !== "no")
-            showError();
+            showError(error);
           else if (data[1]['total'] === 0) {
             showError("no product found")
           }
           else {
-            data.splice(0, 2);
+            data.splice(0,2);
             setProduct(data);
+            console.log(data);
           }
         })
         .catch((error) => {
-          // console.log(error);
-          NetworkError();
+          console.log(error);
+          NetworkError('oops something went wrong, please try after sometime.')
         })
     }
   });
@@ -44,6 +46,7 @@ export default function AdminViewProduct() {
       {/* End of Sidebar */}
       {/* Content Wrapper */}
       <div id="content-wrapper" className="d-flex flex-column">
+      <ToastContainer />
         {/* Main Content */}
         <div id="content">
           {/* Topbar */}
@@ -107,7 +110,7 @@ export default function AdminViewProduct() {
                 <h5 className="border-bottom pb-2">{product['title']}</h5>
                 <div className="row">
                   <div className="col-12 col-sm-6">
-                    <img src={getImages() + "product/" + product["photo"]} className="img-fluid" alt />
+                    <img src={getImages() + "product/" + product["photo"]} className="img-fluid" />
                   </div>
                   <div className="col-12 col-sm-6">
                     <table className="table table-striped">
@@ -137,7 +140,7 @@ export default function AdminViewProduct() {
                         </tr>
                         <tr>
                           <td>is Live</td>
-                          <td>{(product['isLive']) === '1' ? "Yes" : "No"}</td>
+                          <td>{(product['isLive'] === '1') ? "Yes" : "No"}</td>
                         </tr>
                       </tbody></table>
                   </div>

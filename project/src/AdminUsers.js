@@ -1,6 +1,54 @@
 import { Link } from "react-router-dom";
 import AdminSideMenu from "./AdminSideMenu";
+import showError, { NetworkError } from "./toast-message";
+import { useEffect, useState } from "react";
+import { ToastContainer } from "react-toastify";
+import getBase from "./api";
 export default function AdminUsers() {
+    //inner function
+    let DisplayUsers = function(item){
+        return(<tr>
+            <td>{item.id}</td>
+            <td>{item.email}</td>
+            <td>{item.mobile}</td>
+            <td width="15%" align="center">
+                <Link to="/order-detail">
+                    <i className="fa fa-gift fa-2x" />
+                </Link>&nbsp;
+            </td>
+        </tr>);
+    }
+     // create state array
+  let [users, setUsers] = useState([]);
+  useEffect(() => {
+    //call api
+    if (users.length === 0) {
+      let apiAddress = getBase() + "/users.php";
+      fetch(apiAddress)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          //get error info
+          let error = data[0]["error"];
+          if (error !== "no") {
+            showError();
+          }
+          else if (data[1]["total"] === 0) {
+            showError("No order is found");
+          }
+          else {
+            //there is no error and there is atleast one product
+            data.splice(0, 2);
+            console.log(data);
+            setUsers(data);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          NetworkError('oops something went wrong, please try after sometime.')
+        })
+    }
+  })
     return (<div>
         <div id="wrapper">
             {/* Sidebar */}
@@ -8,6 +56,7 @@ export default function AdminUsers() {
             {/* End of Sidebar */}
             {/* Content Wrapper */}
             <div id="content-wrapper" className="d-flex flex-column">
+                <ToastContainer/>
                 {/* Main Content */}
                 <div id="content">
                     {/* Topbar */}
@@ -77,16 +126,7 @@ export default function AdminUsers() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>ankit@gmail.com</td>
-                                            <td>1234567890</td>
-                                            <td width="15%" align="center">
-                                                <Link to="/orders">
-                                                    <i className="fa fa-gift fa-2x" />
-                                                </Link>&nbsp;
-                                            </td>
-                                        </tr>
+                                        {users.map((item)=>DisplayUsers(item))}
                                     </tbody>
                                 </table>
                             </div>

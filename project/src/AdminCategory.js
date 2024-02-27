@@ -63,6 +63,7 @@ export default function AdminCategory() {
       {/* End of Sidebar */}
       {/* Content Wrapper */}
       <div id="content-wrapper" className="d-flex flex-column">
+      <ToastContainer />
         {/* Main Content */}
         <div id="content">
           {/* Topbar */}

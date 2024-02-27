@@ -4,7 +4,7 @@ function get()
 }
 export default function getBase()
 {
-    return get() +'ws/';
+    return get() +"ws/";
 }
 export function getImages()
 {

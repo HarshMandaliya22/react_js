@@ -38,7 +38,7 @@ export default function AdminProducts() {
             fetch(apiAddress)
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log(data);
+                    // console.log(data);
                     //get error info
                     let error = data[0]["error"];
                     if (error !== "no") {
@@ -50,7 +50,7 @@ export default function AdminProducts() {
                     else {
                         //there is no error and there is atleast one product
                         data.splice(0, 2);
-                        console.log(data);
+                        // console.log(data);
                         setProduct(data);
                     }
                 })
@@ -67,6 +67,7 @@ export default function AdminProducts() {
             {/* End of Sidebar */}
             {/* Content Wrapper */}
             <div id="content-wrapper" className="d-flex flex-column">
+            <ToastContainer />
                 {/* Main Content */}
                 <div id="content">
                     {/* Topbar */}

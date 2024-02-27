@@ -13,24 +13,22 @@ export default function AdminViewProduct() {
   let [product, setProduct] = useState({}); //here we use {} instead of [] because we have only one object not multiple objects
   useEffect(() => {
     if (product.id === undefined) {
-      //api calling
       let apiAddress = getBase() + "product.php?productid=" + productid;
-      // call api using fetch method
       console.log(apiAddress);
       fetch(apiAddress)
         .then((response) => response.json())
         .then((data) => {
-          // console.log(data);
+          console.log(data);
           let error = data[0]["error"];
           if (error !== "no")
             showError(error);
-          else if (data[1]['total'] === 0) {
-            showError("no product found")
-          }
+            else if (data[1]['total'] === 0) {
+              showError("no product found")
+            }
           else {
-            data.splice(0,2);
-            setProduct(data);
-            console.log(data);
+            data.splice(0, 2);
+            console.log(data[0]);
+            setProduct(data[0]);
           }
         })
         .catch((error) => {
@@ -46,7 +44,7 @@ export default function AdminViewProduct() {
       {/* End of Sidebar */}
       {/* Content Wrapper */}
       <div id="content-wrapper" className="d-flex flex-column">
-      <ToastContainer />
+        <ToastContainer />
         {/* Main Content */}
         <div id="content">
           {/* Topbar */}
@@ -81,6 +79,7 @@ export default function AdminViewProduct() {
               <li className="nav-item dropdown no-arrow">
                 <a className="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span className="mr-2 d-none d-lg-inline text-gray-600 small">Harsh Mandaliya</span>
+                  {/* <img className="img-profile rounded-circle" src="admin/img/undraw_profile.svg" /> */}
                   <img className="img-profile rounded-circle" src="admin/img/undraw_profile.svg" />
                 </a>
                 {/* Dropdown - User Information */}

@@ -4,6 +4,7 @@ import showError, { NetworkError } from "./toast-message";
 import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import getBase from "./api";
+import axios from 'axios';
 export default function AdminOrders() {
   //inner function
   let DisplayOrder = function(item){
@@ -18,41 +19,39 @@ export default function AdminOrders() {
         {item.city} - {item.pincode}
       </td>
       <td width="15%">
-        <Link to="/order-detail">
+        <Link to={"/order-detail/" + item['id']}>
           <i className="fa fa-eye fa-2x" />
         </Link>&nbsp;
       </td>
     </tr>);
   }
   // create state array
-  let [order, setorder] = useState([]);
+  let [order, setOrder] = useState([]);
   useEffect(() => {
     //call api
     if (order.length === 0) {
       let apiAddress = getBase() + "/orders.php";
-      fetch(apiAddress)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          //get error info
-          let error = data[0]["error"];
-          if (error !== "no") {
-            showError();
-          }
-          else if (data[1]["total"] === 0) {
-            showError("No order is found");
-          }
-          else {
-            //there is no error and there is atleast one product
-            data.splice(0, 2);
-            console.log(data);
-            setorder(data);
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-          NetworkError('oops something went wrong, please try after sometime.')
-        })
+      axios({
+        method: 'get',
+        responseType: 'json',
+        url: apiAddress
+    }).then((response) => {
+        console.log(response);
+        let error = response.data[0]['error'];
+        if (error !== 'no')
+            showError(error);
+        else if (response.data[1]['total'] === 0)
+            showError('no users found');
+        else {
+            response.data.splice(0, 2);
+            setOrder(response.data);
+        }
+    }).catch((error) => {
+        console.log(error.code);
+        if (error.code === 'ERR_NETWORK')
+            showError("Either internet is switch off or api is not available");
+
+    });
     }
   })
   return (<div>

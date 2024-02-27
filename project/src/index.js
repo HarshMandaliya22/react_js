@@ -32,7 +32,7 @@ function ProjectRoute() {
                 <Route path='/edit-product' element={<AdminEditproduct />} />
                 <Route path='/home' element={<AdminHome />} />
                 <Route path='/orders' element={<AdminOrders />} />
-                <Route path='/order-detail' element={<AdminOrderDetail />} />
+                <Route path='/order-detail/:orderid' element={<AdminOrderDetail />} />
                 <Route path='/products' element={<AdminProducts />} />
                 <Route path='/profile' element={<AdminProfile />} />
                 <Route path='/users' element={<AdminUsers />} />

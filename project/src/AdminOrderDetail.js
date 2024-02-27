@@ -1,6 +1,37 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import AdminSideMenu from "./AdminSideMenu";
+import showError, { NetworkError } from "./toast-message";
+import { useEffect, useState } from "react";
+import { ToastContainer } from "react-toastify";
+import getBase from "./api";
+import axios from 'axios';
 export default function AdminOrderDetail() {
+  // create variable to store order id passed as a query string
+  let { orderid } = useParams();
+  console.log(orderid);
+  // create state array
+  let [order, setOrder] = useState([]);
+  useEffect(() => {
+    let apiAddress = getBase() + "orders.php?id=" + orderid;
+    console.log(apiAddress);
+    axios({
+      method: 'get',
+      responseType: "json",
+      url: apiAddress
+    }).then((response) => {
+      console.log(response)
+      let error = response.data[0]['error'];
+      if (error != 'no') {
+        showError(error);
+      }
+      else if (response.data[1]['total'] === 0) {
+        showError('no order details found');
+      }
+      else {
+        setOrder(response.data[2]);
+      }
+    })
+  })
   return (<div>
     <div id="wrapper">
       {/* Sidebar */}
@@ -66,39 +97,39 @@ export default function AdminOrderDetail() {
               <div className="card-header bg-primary text-white d-flex justify-content-between">
                 <h3 className="mb-1">Orders</h3>
                 <span>
-                  <Link className="btn btn-light" to="/orders">back</Link> &emsp;
-                  <button type="button" onclick={() => window.print()} className="btn btn-light">Print</button>
+                  <Link className="btn btn-light" to="/orders">back</Link> &nbsp;
+                  <button type="button" onClick={() => window.print()} className="btn btn-light">Print</button>
                 </span>
               </div>
               <div className="card-body">
                 <table className="table text-center table-bordered table-sm">
                   <tbody><tr>
                     <th>Bill No</th>
-                    <td>12345</td>
+                    <td>{order['id']}</td>
                     <th>Customer ID</th>
-                    <td>7890</td>
+                    <td>{order['id']}</td>
                   </tr>
                     <tr>
                       <th>Date</th>
-                      <td>12-02-2024</td>
+                      <td>{order['billdate']}</td>
                       <th>Name</th>
-                      <td>Rahul Sharma</td>
+                      <td>{order['fullname']}</td>
                     </tr>
                     <tr>
                       <th>Amount</th>
-                      <td>₹100.00</td> {/* Assuming Indian Rupees */}
+                      <td>₹{order['amount']}</td> {/* Assuming Indian Rupees */}
                       <th>Address</th>
-                      <td>42, MG Road, Pune</td>
+                      <td>{order['address1']} {order['address2']}</td>
                     </tr>
                     <tr>
                       <th>Payment status</th>
-                      <td>Paid</td>
+                      <td>{order['id']}</td>
                       <th>City</th>
-                      <td>Mumbai</td>
+                      <td>{order['city']}</td>
                     </tr>
                     <tr>
                       <th>Order Status</th>
-                      <td>
+                      <td> {order['orderstatus']}
                         <select name="orderstatus" className="form-select">
                           <option value>change order status</option>
                           <option value={1}>Confirmed</option>
@@ -108,11 +139,11 @@ export default function AdminOrderDetail() {
                         </select>
                       </td>
                       <th>Pincode</th>
-                      <td>411001</td>
+                      <td>{order['pincode']}</td>
                     </tr>
                     <tr>
                       <th>Remarks</th>
-                      <td>None</td>
+                      <td>gift packing</td>
                       <th>Mobile</th>
                       <td>+91-1234567890</td>
                     </tr>

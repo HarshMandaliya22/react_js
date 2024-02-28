@@ -6,7 +6,6 @@ import axios from "axios";
 import showError, { NetworkError, showMessage } from "./toast-message";
 import { ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-
 export default function AdminAddCategory() {
     // create 3 state variables
     let [title, setTitle] = useState("");

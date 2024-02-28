@@ -55,7 +55,7 @@ export default function AdminCategory() {
         });
     }
   })
-
+  
   return (<div>
     <div id="wrapper">
       {/* Sidebar */}

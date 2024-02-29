@@ -1,10 +1,34 @@
 import { Link, redirectDocument } from "react-router-dom";
-import showError, { NetworkError } from "./toast-message";
+import showError, { NetworkError ,showMessage } from "./toast-message";
 import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import getBase, { getImages } from "./api";
 import AdminSideMenu from "./AdminSideMenu";
+import axios from 'axios'
 export default function AdminProducts() {
+        // create state array
+        let [product, setProduct] = useState([]);
+        let DeleteProduct = function (id) {
+            console.log(id);
+            let apiAddress = getBase() + "delete_product.php?id=" + id;
+            axios({
+              method:'get',
+              responseType: 'json',
+              url : apiAddress
+            }).then((response) =>{
+              console.log(response.data);
+              let error = response.data[0]['error'];
+              if(error !== 'no')
+              showError(error);
+            else
+            showMessage((response.data[1]['message']));
+              setProduct(product.filter((item)=>{
+                if(item.id !== id){
+                  return id;
+                }
+              }))
+            })
+          }
     //inner function
     let DisplayProduct = function (item) {
         return (<tr>
@@ -23,14 +47,13 @@ export default function AdminProducts() {
                 <Link to="/edit-product"><i className="fa-solid fa-pencil fa-2x" />
                 </Link>
                 &nbsp;
-                <a href="#">
+                <a href="#" onClick={(e) => { e.preventDefault(); DeleteProduct(item.id); }}>
                     <i className="fa-solid fa-trash fa-2x" />
                 </a>
             </td>
         </tr>);
     }
-    // create state array
-    let [product, setProduct] = useState([]);
+
     useEffect(() => {
         //call api
         if (product.length === 0) {

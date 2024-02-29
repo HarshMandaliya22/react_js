@@ -1,10 +1,34 @@
 import AdminSideMenu from "./AdminSideMenu";
 import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
-import showError, { NetworkError } from "./toast-message";
+import showError, { NetworkError, showMessage } from "./toast-message";
 import { Link } from "react-router-dom";
 import getBase, { getImages } from "./api";
+import axios from 'axios'
 export default function AdminCategory() {
+  // create state array
+  let [category, setCategory] = useState([]);
+  let DeleteCategory = function (id) {
+    console.log(id);
+    let apiAddress = getBase() + "delete_category.php?id=" + id;
+    axios({
+      method:'get',
+      responseType: 'json',
+      url : apiAddress
+    }).then((response) =>{
+      console.log(response.data);
+      let error = response.data[0]['error'];
+      if(error !== 'no')
+      showError(error);
+    else
+    showMessage((response.data[1]['message']));
+      setCategory(category.filter((item)=>{
+        if(item.id !== id){
+          return id;
+        }
+      }))
+    })
+  }
   let DisplayCategory = function (item) {
     return (
       <tr>
@@ -16,15 +40,14 @@ export default function AdminCategory() {
           <Link to="/edit-category"><i className="fa-solid fa-pencil fa-2x" />
           </Link>
           &nbsp;
-          <a href="#">
+          <a href="#" onClick={(e) => { e.preventDefault(); DeleteCategory(item.id); }}>
             <i className="fa-solid fa-trash fa-2x" />
           </a>
         </td>
       </tr>
     )
   }
-  // create state array
-  let [category, setCategory] = useState([]);
+
   //use hook useEffect()
   useEffect(() => {
     //call api 
@@ -55,7 +78,7 @@ export default function AdminCategory() {
         });
     }
   })
-  
+
   return (<div>
     <div id="wrapper">
       {/* Sidebar */}
@@ -63,7 +86,7 @@ export default function AdminCategory() {
       {/* End of Sidebar */}
       {/* Content Wrapper */}
       <div id="content-wrapper" className="d-flex flex-column">
-      <ToastContainer />
+        <ToastContainer />
         {/* Main Content */}
         <div id="content">
           {/* Topbar */}

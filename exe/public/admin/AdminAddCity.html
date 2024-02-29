@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Booking Bites</title>
+    <title>Add City</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -63,14 +63,15 @@
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="AdminHome.html" class="nav-item nav-link"><i class="fa fa-home me-2"></i>Home</a>
-                    <a href="AdminChef.html" class="nav-item nav-link  active"><i
+                    <a href="AdminChef.html" class="nav-item nav-link"><i
                             class="fa-solid fa-cheese"></i>Chef</a>
-                    <a href="AdminCity.html" class="nav-item nav-link"><i class="fa fa-city me-2"></i>City</a>
+                    <a href="AdminCity.html" class="nav-item nav-link active"><i class="fa fa-city me-2"></i>City</a>
                     <a href="AdminCausing.html" class="nav-item nav-link"><i class="fa fa-utensils me-2"></i>Causing</a>
                     <a href="AdminService.html" class="nav-item nav-link"><i
                             class="fa-solid fa-bell-concierge"></i>Service</a>
                     <a href="#" class="nav-item nav-link"><i class="fa-solid fa-right-from-bracket"></i>Log Out</a>
-                    <a href="AdminForgotPassword.html" class="nav-item nav-link"><i class="fa-solid fa-gear"></i>Forgot Password</a>
+                    <a href="AdminForgotPassword.html" class="nav-item nav-link"><i class="fa-solid fa-gear"></i>Forgot
+                        Password</a>
                 </div>
             </nav>
         </div>
@@ -97,18 +98,45 @@
         </nav>
         <!-- Navbar End -->
         <div class="container-fluid">
-            <div class="card shadow mt-2">
+            <div class="card shadow">
                 <div class="card-header bg-dark d-flex justify-content-between">
-                    <h3 class="card-title fw-semibold text-white">sample</h3>
-                    <a href="#" class="btn btn-light">sample</a>
+                    <h3 class="card-title fw-semibold text-white mt-2">Add City</h3>
+                    <a href="AdminCity.html" class="btn btn-light mt-2">Back</a>
                 </div>
                 <div class="card-body">
-                    <h5 class="pb-2 border-bottom p-2">sample</h5>
+                    <form>
+                        <div class="row mt-1">
+                            <div class="mt-2">
+                                <label for="city" class="form-label">City</label>
+                                <select class="form-select" aria-label="select">
+                                    <option selected>Select</option>
+                                    <option value="1">Ahmedabad</option>
+                                    <option value="2">Surat</option>
+                                    <option value="3">Vadodara</option>
+                                    <option value="4">Rajkot</option>
+                                    <option value="5">Bhavnagar</option>
+                                    <option value="6">Jamnagar</option>
+                                    <option value="7">Junagadh</option>
+                                    <option value="8">Gandhinagar</option>
+                                </select>
+                            </div>
+                            <div class="mt-2">
+                                <button type="submit" class="btn btn-dark">Add City</button>
+                                <button type="reset" class="btn btn-dark">Cancel</button>
+                            </div>
+                        </div>
+            
                 </div>
             </div>
+            </form>
         </div>
-        <!-- Footer Start -->
-        <!-- Footer End -->
+    </div>
+
+    </div>
+    </div>
+    </div>
+    <!-- Footer Start -->
+    <!-- Footer End -->
     </div>
     <!-- Content End -->
     <!-- JavaScript Libraries -->

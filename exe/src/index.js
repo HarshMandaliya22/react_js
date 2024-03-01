@@ -13,4 +13,4 @@ import AdminService from './AdminService';
 import AdminForgotPassword from './AdminForgotPassword';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<AdminLogin/>);
+root.render(<AdminChef/>);

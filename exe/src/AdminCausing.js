@@ -48,15 +48,14 @@ export default function AdminCausing() {
             </div>
             <div className="row">
               <div className="col-md-4">
-                <div className="card mt-3 mx-2">
+                <div className="card my-3 mx-3">
                   <div className="card-header">
                     <h4>Gujarati</h4>
                   </div>
                   <div className="card-body">
                     <img className="card-img-top" src="https://picsum.photos/300?random=1" alt="Gujarati" />
                     <div className="border-bottom pb-2">Detail</div>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt eum deserunt
-                      illo, dicta ad vero distinctio dolore quidem qui ?</p>
+                    <p>Lorem</p>
                   </div>
                 </div>
               </div>

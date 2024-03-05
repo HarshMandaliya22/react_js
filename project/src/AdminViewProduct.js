@@ -139,7 +139,7 @@ export default function AdminViewProduct() {
                         </tr>
                         <tr>
                           <td>is Live</td>
-                          <td>{(product['isLive'] === '1') ? "Yes" : "No"}</td>
+                          <td>{(product['islive'] === '1') ? "Yes" : "No"}</td>
                         </tr>
                       </tbody></table>
                   </div>

@@ -44,7 +44,7 @@ export default function AdminProducts() {
                 <Link to={"/view-product/" + item["id"]}><i className="fa-solid fa-eye fa-2x" />
                 </Link>
                 &nbsp;
-                <Link to="/edit-product"><i className="fa-solid fa-pencil fa-2x" />
+                <Link to={"/edit-product/" + item['id'] }><i className="fa-solid fa-pencil fa-2x" />
                 </Link>
                 &nbsp;
                 <a href="#" onClick={(e) => { e.preventDefault(); DeleteProduct(item.id); }}>

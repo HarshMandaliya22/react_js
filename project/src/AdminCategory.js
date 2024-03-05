@@ -37,7 +37,7 @@ export default function AdminCategory() {
         <td> <img src={getImages() + "category/" + item.photo} className="img-fluid" alt /> </td>
         <td>{(item.islive) === "1" ? "Yes" : "No"}</td>
         <td>
-          <Link to="/edit-category"><i className="fa-solid fa-pencil fa-2x" />
+          <Link to={"/edit-category/" + item.id}><i className="fa-solid fa-pencil fa-2x" />
           </Link>
           &nbsp;
           <a href="#" onClick={(e) => { e.preventDefault(); DeleteCategory(item.id); }}>

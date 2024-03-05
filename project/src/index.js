@@ -28,8 +28,8 @@ function ProjectRoute() {
                 <Route path='/add-product' element={<AdminAddProduct />} />
                 <Route path='/category' element={<AdminCategory />} />
                 <Route path='/change-password' element={<AdminChangePassword />} />
-                <Route path='/edit-category' element={<AdminEditCategory />} />
-                <Route path='/edit-product' element={<AdminEditproduct />} />
+                <Route path='/edit-category/:categoryid' element={<AdminEditCategory />} />
+                <Route path='/edit-product/:productid' element={<AdminEditproduct />} />
                 <Route path='/home' element={<AdminHome />} />
                 <Route path='/orders' element={<AdminOrders />} />
                 <Route path='/order-detail/:orderid' element={<AdminOrderDetail />} />

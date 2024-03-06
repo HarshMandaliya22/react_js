@@ -41,9 +41,9 @@ export default function AdminSideMenu() {
           <Link to="/service" className="nav-item nav-link">
             <i className="fa-solid fa-bell-concierge me-2" />Service
           </Link>
-          <Link to="/forgot-password" className="nav-item nav-link">
+          {/* <Link to="/forgot-password" className="nav-item nav-link">
             <i className="fa-solid fa-gear me-2" />Forgot Password
-          </Link>
+          </Link> */}
           <Link to="#" className="nav-item nav-link">
             <i className="fa-solid fa-right-from-bracket me-2" />Log Out
           </Link>

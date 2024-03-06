@@ -25,7 +25,7 @@ export default function AdminLogin() {
                 <label htmlFor="floatingPassword">Password</label>
               </div>
               <div className="d-flex align-items-center justify-content-end mb-4">
-                <Link to="AdminForgotPassword.html">Forgot Password?</Link>
+                <Link to="/forgot-password">Forgot Password?</Link>
               </div>
               <button type="submit" className="btn btn-dark py-3 w-100 mb-4">Sign In</button>
             </div>

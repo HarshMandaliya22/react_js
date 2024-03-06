@@ -21,7 +21,7 @@ export default function AdminHome() {
           <div className="navbar-nav align-items-center ms-auto">
             <div className="nav-item dropdown">
               <div href="#" className="nav-link">
-                <img className="rounded-circle me-lg-2" src="img/user.jpg" alt="" style={{ "width": "40px", "height": "40px" }} />
+                <img className="rounded-circle me-lg-2" src="admin/img/user.jpg" alt="" style={{ "width": "40px", "height": "40px" }} />
                 <span className="d-none d-lg-inline-flex">John Doe</span>
               </div>
               <div className="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">

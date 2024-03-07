@@ -6,8 +6,9 @@ import getBase, { getImages } from "./api";
 import axios from "axios";
 import showError, { NetworkError, showMessage } from "./toast-message";
 import { useNavigate } from "react-router-dom";
-import { useDebugValue, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 export default function AdminEditproduct() {
+  let navigate = useNavigate();
   let { productid } = useParams();
   console.log(productid);
   let [categoryid, setCategoryId] = useState('');
@@ -54,7 +55,7 @@ export default function AdminEditproduct() {
         showError('OOPS something went wrong, it seems you are offline or server is offline');
     });
   }
-  let fetchCategories = function() {
+  let fetchCategories = function () {
     let apiAddress = getBase() + "category.php";
     axios({
       method: 'get',
@@ -75,7 +76,7 @@ export default function AdminEditproduct() {
     }).catch((error) => {
       console.log(error);
       if (error.code === 'ERR_NETWORK')
-        showError('you are offline or server is offline');
+        NetworkError('you are offline or server is offline');
 
     });
   }
@@ -84,19 +85,41 @@ export default function AdminEditproduct() {
     let apiAddress = getBase() + "update_product.php?id=" + productid;
     let form = new FormData();
     form.append("categoryid", categoryid);
-    form.append('title', title);
+    form.append("productid", productid);
+    form.append('name', title);
     form.append('price', price);
     form.append('stock', stock);
     form.append('weight', weight);
     form.append('islive', islive);
     form.append('photo', photo);
     form.append('size', size);
-    form.append('details', detail);
+    form.append('detail', detail);
     axios({
       method: 'post',
       responseType: 'json',
       url: apiAddress,
       data: form
+    }).then((response) => {
+      console.log(response.data);
+      let error = response.data[0]['error'];
+      if (error !== 'no')
+        showError(error)
+      else {
+        let success = response.data[1]['success'];
+        let message = response.data[2]['message'];
+        if (success === 'no')
+          showError(message);
+        else {
+          showMessage(message);
+          setTimeout(() => {
+            navigate("/products");
+          }, 2000);
+        }
+      }
+    }).catch((error) => {
+      console.log(error);
+      if (error.code === 'ERR_NETWORK')
+        showError('either you are or server is offline');
     });
   }
   useEffect(() => {
@@ -187,10 +210,10 @@ export default function AdminEditproduct() {
                           <select className="form-select" id="categoryid" name="categoryid" required autofocus>
                             <option value={''}>Select Category</option>
                             {category.map((item) => {
-                              if(categoryid===item.id)
-                              return <option selected value={item.id}>{item.title}</option>
+                              if (categoryid === item.id)
+                                return <option selected value={item.id}>{item.title}</option>
                               else
-                              return <option value={item.id}>{item.title}</option>
+                                return <option value={item.id}>{item.title}</option>
                             })}
                           </select>
                         </div>

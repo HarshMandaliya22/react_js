@@ -7,7 +7,7 @@ import AdminForgotPassword from './AdminForgotPassword';
 import AdminAddCategory from './AdminAddCategory';
 import AdminAddProduct from './AdminAddProduct';
 import AdminCategory from './AdminCategory';
-import AdminChangePassword from './AdminChnagePassword';
+import AdminChangePassword from './AdminChangePassword'
 import AdminEditCategory from './AdminEditCategory';
 import AdminEditproduct from './AdminEditProduct';
 import AdminHome from './AdminHome';

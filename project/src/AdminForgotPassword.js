@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 export default function AdminForgotPassword()
 {
-    return(<div className="container bg-gradient-primary">
+    return(<div className="container bg-gradient-primary mt-5">
     {/* Outer Row */}
     <div className="row justify-content-center">
       <div className="col-xl-10 col-lg-12 col-md-9">

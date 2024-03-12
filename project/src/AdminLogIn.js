@@ -1,8 +1,51 @@
 import { Link } from "react-router-dom";
+import getBase from "./api";
+import axios from "axios";
+import showError, { NetworkError, showMessage } from "./toast-message";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+export default function AdminLogIn() {
+  let navigate = useNavigate();
+  let [email, setEmail] = useState();
+  let [password, setPassword] = useState();
+  let LogIn = function (e) {
+    e.preventDefault();
+    console.log(email, password)
+    let apiAddress = getBase() + 'login.php';
+    let form = new FormData();
 
-export default function AdminLogIn()
-{
-    return(<div className="container bg-gradient-primary">
+    form.append("email", email);
+    form.append("password", password);
+
+    axios({
+      method: 'post',
+      responseType: 'json',
+      url: apiAddress,
+      data: form
+    }).then((response) => {
+      console.log(response.data);
+      let error = response.data[0]['error'];
+      if (error !== 'no')
+        showError(error)
+      else {
+        let success = response.data[1]['success'];
+        let message = response.data[2]['message'];
+        if (success === 'no')
+          showError(message);
+        else {
+          showMessage(message);
+          setTimeout(() => {
+            navigate("/home");
+          }, 2000);
+        }
+      }
+    }).catch((error) => {
+      if (error.code === 'ERR_NETWORK')
+        NetworkError();
+    });
+  }
+
+  return (<div className="container bg-gradient-primary mt-5">
     {/* Outer Row */}
     <div className="row justify-content-center">
       <div className="col-xl-10 col-lg-12 col-md-9">
@@ -16,32 +59,30 @@ export default function AdminLogIn()
                   <div className="text-center">
                     <h1 className="h4 text-gray-900 mb-4">Welcome Back!</h1>
                   </div>
-                  <form className="user">
+                  <form className="user" onSubmit={LogIn}>
                     <div className="form-group">
-                      <input type="email" className="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." />
+                      <input type="email" className="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..."
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)} />
                     </div>
                     <div className="form-group">
-                      <input type="password" className="form-control form-control-user" id="exampleInputPassword" placeholder="Password" />
+                      <input type="password" className="form-control form-control-user" id="exampleInputPassword" placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)} />
                     </div>
-                    <div className="form-group">
+                    {/* <div className="form-group">
                       <div className="custom-control custom-checkbox small">
                         <input type="checkbox" className="custom-control-input" id="customCheck" />
                         <label className="custom-control-label" htmlFor="customCheck">Remember
                           Me</label>
                       </div>
-                    </div>
-                    <a href="#" className="btn btn-primary btn-user btn-block">
-                      Login
-                    </a>
+                    </div> */}
+                    <input type="submit" className="btn btn-primary btn-user btn-block" value='Login' />
                     <hr />
-                    <a href="#" className="btn btn-google btn-user btn-block">
-                      <i className="fab fa-google fa-fw" /> Login with Google
-                    </a>
+                    <div className="text-center">
+                      <Link className="small" to="/forgot-password">Forgot Password?</Link>
+                    </div>
                   </form>
-                  <hr />
-                  <div className="text-center">
-                    <Link className="small" to="/forgot-password">Forgot Password?</Link>
-                  </div>
                 </div>
               </div>
             </div>

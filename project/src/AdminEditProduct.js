@@ -7,7 +7,9 @@ import axios from "axios";
 import showError, { NetworkError, showMessage } from "./toast-message";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import VerifyLogin from "./VerifyLogin";
 export default function AdminEditproduct() {
+  VerifyLogin();
   let navigate = useNavigate();
   let { productid } = useParams();
   console.log(productid);

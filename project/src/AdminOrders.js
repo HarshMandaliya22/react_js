@@ -5,7 +5,9 @@ import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import getBase from "./api";
 import axios from 'axios';
+import VerifyLogin from "./VerifyLogin";
 export default function AdminOrders() {
+  VerifyLogin();
   //inner function
   let DisplayOrder = function(item){
     return(<tr>

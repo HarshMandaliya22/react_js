@@ -7,7 +7,9 @@ import getBase, { getImages } from "./api";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import CategoryFetch from "./category_fetch_api";
+import VerifyLogin from "./VerifyLogin";
 export default function AdminAddProduct() {
+  VerifyLogin();
   // create state variables to store input given by user
   let [categoryID, setCategoryID] = useState('');
   let [name, setName] = useState('');

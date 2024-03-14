@@ -5,7 +5,9 @@ import { ToastContainer } from "react-toastify";
 import getBase, { getImages } from "./api";
 import { useParams } from "react-router-dom";
 import AdminSideMenu from "./AdminSideMenu";
+import VerifyLogin from "./VerifyLogin";
 export default function AdminViewProduct() {
+  VerifyLogin();
   //store query string named as productid into variable
   let { productid } = useParams();
   // console.log(productid);

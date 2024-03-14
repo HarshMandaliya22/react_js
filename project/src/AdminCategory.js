@@ -5,7 +5,9 @@ import showError, { NetworkError, showMessage } from "./toast-message";
 import { Link } from "react-router-dom";
 import getBase, { getImages } from "./api";
 import axios from 'axios'
+import VerifyLogin from "./VerifyLogin";
 export default function AdminCategory() {
+  VerifyLogin();
   // create state array
   let [category, setCategory] = useState([]);
   let DeleteCategory = function (id) {

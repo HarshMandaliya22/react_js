@@ -5,7 +5,9 @@ import { ToastContainer } from "react-toastify";
 import getBase, { getImages } from "./api";
 import AdminSideMenu from "./AdminSideMenu";
 import axios from 'axios'
+import VerifyLogin from "./VerifyLogin";
 export default function AdminProducts() {
+    VerifyLogin();
         // create state array
         let [product, setProduct] = useState([]);
         let DeleteProduct = function (id) {

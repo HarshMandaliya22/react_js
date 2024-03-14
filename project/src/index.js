@@ -17,12 +17,14 @@ import AdminProducts from './AdminProducts';
 import AdminProfile from './AdminProfile';
 import AdminUsers from './AdminUsers';
 import AdminViewProduct from './AdminViewProduct';
+import AdminLogout from './AdminLogout';
 let NoPageFound = () => <h1 >No Such Page Exist</h1>
 function ProjectRoute() {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path='/' element={<AdminLogIn />} />
+                <Route path='/logout' element={<AdminLogout />} />
                 <Route path='/forgot-password' element={<AdminForgotPassword />} />
                 <Route path='/add-category' element={<AdminAddCategory />} />
                 <Route path='/add-product' element={<AdminAddProduct />} />

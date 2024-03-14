@@ -6,7 +6,9 @@ import axios from "axios";
 import showError, { NetworkError, showMessage } from "./toast-message";
 import { ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import VerifyLogin from "./VerifyLogin";
 export default function AdminAddCategory() {
+    VerifyLogin();
     // create 3 state variables
     let [title, setTitle] = useState("");
     let [photo, setPhoto] = useState("");

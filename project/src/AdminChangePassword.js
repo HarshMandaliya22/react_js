@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import AdminSideMenu from "./AdminSideMenu";
+import VerifyLogin from "./VerifyLogin";
 export default function AdminChangePassword() {
+  VerifyLogin();
    return(<div>
     <div id="wrapper">
       {/* Sidebar */}

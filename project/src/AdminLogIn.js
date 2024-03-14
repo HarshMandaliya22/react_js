@@ -4,8 +4,12 @@ import axios from "axios";
 import showError, { NetworkError, showMessage } from "./toast-message";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import {useCookies} from 'react-cookie';
+import { COOKIENAME } from "./api";
 export default function AdminLogIn() {
   let navigate = useNavigate();
+   //create cookie object and its methods 
+   let [cookies,setCookie,removeCookie] = useCookies(COOKIENAME);
   let [email, setEmail] = useState();
   let [password, setPassword] = useState();
   let LogIn = function (e) {
@@ -35,6 +39,9 @@ export default function AdminLogIn() {
         else {
           showMessage(message);
           setTimeout(() => {
+            //create cookies variable
+            setCookie('id',response.data[3]['id'],{path:'/'});
+            console.log(cookies['name']);
             navigate("/home");
           }, 2000);
         }

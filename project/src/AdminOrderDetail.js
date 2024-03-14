@@ -5,7 +5,9 @@ import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import getBase from "./api";
 import axios from 'axios';
+import VerifyLogin from "./VerifyLogin";
 export default function AdminOrderDetail() {
+  VerifyLogin();
   // create variable to store order id passed as a query string
   let { orderid } = useParams();
   console.log(orderid);

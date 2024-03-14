@@ -4,8 +4,10 @@ import axios from "axios";
 import showError, { NetworkError, showMessage } from "./toast-message";
 import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
+import VerifyLogin from "./VerifyLogin";
 // http://www.theeasylearnacademy.com/shop/ws/summery.php
 import AdminSideMenu from "./AdminSideMenu";
+VerifyLogin();
 export default function AdminHome() {
   let [home,setHome] = useState('');
   let [isfetched,setIsFetched] = useState(false)
